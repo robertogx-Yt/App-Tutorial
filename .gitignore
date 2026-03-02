@@ -1,9 +1,7 @@
-# Build artifacts
-/dist/
-*.exe
-
-# Node artifacts
 node_modules/
-
-# Go coverage
-*.out
+dist/
+.vite/
+android/
+.DS_Store
+*.log
+*.pyc
