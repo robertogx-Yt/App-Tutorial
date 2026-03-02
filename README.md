@@ -1,6 +1,6 @@
 # FocusFlow - MVP (Productividad + Gamificación)
 
-Este repositorio ahora incluye un **prototipo ejecutable** para el primer release de prueba.
+Este repositorio mantiene un release de tipo **source-only**: no versiona artefactos binarios.
 
 ## Incluye
 
@@ -9,30 +9,35 @@ Este repositorio ahora incluye un **prototipo ejecutable** para el primer releas
 - Sistema de juego: XP, niveles y badges (`internal/gamification`).
 - Resumen IA básico por palabras clave (`internal/ai`).
 - Gráficos de base para app móvil (`assets/illustrations/*.svg`).
-- Build de release para Windows en `.exe` (artefacto local, no se versiona en git).
 
-## Ejecutar local
+## Cómo probarlo
+
+### 1) Probar lógica automática (demo)
 
 ```bash
 go run ./cmd/focusflow --mode demo
 ```
 
-## Resumen IA de texto
+### 2) Probar resumen IA
 
 ```bash
 go run ./cmd/focusflow --mode summary --text "Tus notas o texto"
 ```
 
-## Pruebas
+### 3) Ejecutar pruebas automáticas
 
 ```bash
 go test ./...
 ```
 
-## Crear primer `.exe` de prueba
+### 4) Verificar que no hay binarios versionados
+
+```bash
+python3 scripts/check_no_binary.py
+```
+
+### 5) Flujo de release (solo código fuente)
 
 ```bash
 ./scripts/build_release.sh
 ```
-
-El binario se genera localmente en `dist/focusflow.exe` (no se sube al repo; adjúntalo al Release de GitHub).

@@ -1,4 +1,4 @@
-# Primer release de prueba
+# Release de prueba (source-only)
 
 ## Qué se completó
 
@@ -6,7 +6,7 @@
 - Módulo de gamificación (XP, nivel, badges).
 - Resumen IA básico por palabras clave.
 - Recursos gráficos base (`assets/illustrations/*.svg`) para splash/empty-state.
-- Binario de prueba para Windows: se genera en `dist/focusflow.exe` durante el proceso de release local.
+- Política de repo sin binarios versionados.
 
 ## Cómo probar
 
@@ -28,10 +28,14 @@ go run ./cmd/focusflow --mode summary --text "Texto de notas para resumir"
 go test ./...
 ```
 
-### Generar `.exe` de release
+### Validar que no existan binarios versionados
+
+```bash
+python3 scripts/check_no_binary.py
+```
+
+### Flujo de release (solo fuente)
 
 ```bash
 ./scripts/build_release.sh
 ```
-
-Esto creará `dist/focusflow.exe` localmente. Luego súbelo como asset en GitHub Releases.
