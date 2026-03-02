@@ -1,28 +1,26 @@
-# Level Up Daily
+# Level Up Daily (Desktop first - Windows)
 
-PWA de hábitos + gamificación con Flappy Bird integrado.
+Aplicación gamificada estilo sci‑fi con Flappy Bird integrado.
 
-## Stack
-- React 19 + TypeScript + Vite
-- Tailwind CSS
-- Framer Motion
-- Lucide React
-- localStorage
-- Capacitor (Android)
+## Probar rápido
 
-## Ejecutar
 ```bash
 npm install
-npm run dev
+npm run desktop:dev
 ```
 
-## Build
+## Exportar ejecutable Windows
+
 ```bash
-npm run build
+npm run desktop:build
 ```
 
-## Android (Capacitor)
+## Android (después)
+
 ```bash
 npm run android:setup
 npm run android:update
 ```
+
+## Nota
+Si no puedes instalar dependencias por políticas de red (403), prueba en tu máquina local con internet normal.
