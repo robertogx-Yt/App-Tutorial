@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <rect width="1080" height="1920" fill="#101828"/>
+  <circle cx="540" cy="820" r="180" fill="#7C3AED"/>
+  <text x="540" y="840" fill="#fff" font-size="100" text-anchor="middle" font-family="Arial">F</text>
+  <text x="540" y="1160" fill="#fff" font-size="72" text-anchor="middle" font-family="Arial">FocusFlow</text>
+</svg>
