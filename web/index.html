@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FocusFlow | Ventana MVP</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-window">
+      <aside class="sidebar">
+        <img src="../assets/illustrations/splash.svg" alt="FocusFlow" class="logo" />
+        <h1>FocusFlow</h1>
+        <nav>
+          <button class="menu active">Hoy</button>
+          <button class="menu">Tareas</button>
+          <button class="menu">Progreso</button>
+          <button class="menu">Ajustes</button>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <header>
+          <h2>Plan de Hoy</h2>
+          <button id="buildPlan">Generar plan</button>
+        </header>
+
+        <section class="layout-grid">
+          <article class="panel">
+            <h3>Tareas</h3>
+            <ul id="taskList"></ul>
+          </article>
+
+          <article class="panel">
+            <h3>XP y Nivel</h3>
+            <p id="xpInfo"></p>
+            <div class="progress-track"><div id="xpBar" class="progress-bar"></div></div>
+          </article>
+
+          <article class="panel full">
+            <h3>Gráficos</h3>
+            <div class="charts">
+              <div>
+                <h4>Prioridad</h4>
+                <div id="priorityChart" class="bars"></div>
+              </div>
+              <div>
+                <h4>Estado</h4>
+                <div id="statusChart" class="bars"></div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

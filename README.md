@@ -41,3 +41,18 @@ python3 scripts/check_no_binary.py
 ```bash
 ./scripts/build_release.sh
 ```
+
+
+## Ventana gráfica (menús + gráficos)
+
+Ejecuta un servidor local y abre la interfaz visual:
+
+```bash
+python3 -m http.server 4173
+```
+
+Luego abre en el navegador:
+
+- `http://localhost:4173/web/`
+
+Incluye menú lateral, lista de plan de hoy, barra de XP y gráficos de prioridad/estado.

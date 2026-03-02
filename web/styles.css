@@ -1,0 +1,70 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, sans-serif;
+}
+body {
+  margin: 0;
+  background: #0b1020;
+}
+.app-window {
+  margin: 18px;
+  min-height: calc(100vh - 36px);
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #243041;
+}
+.sidebar {
+  background: #111827;
+  padding: 20px;
+}
+.logo {
+  width: 100%;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.menu {
+  width: 100%;
+  text-align: left;
+  margin: 6px 0;
+  padding: 10px;
+  background: transparent;
+  color: #cbd5e1;
+  border: 1px solid #2c3a4f;
+  border-radius: 8px;
+}
+.menu.active { background: #7c3aed; color: white; }
+.content { background: #0f172a; padding: 20px; }
+header { display: flex; justify-content: space-between; align-items: center; }
+#buildPlan { padding: 10px 14px; border-radius: 8px; border: none; background: #22c55e; font-weight: 700; }
+.layout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+.panel { background: #111827; border: 1px solid #2c3a4f; border-radius: 12px; padding: 14px; }
+.panel.full { grid-column: 1 / span 2; }
+#taskList { padding-left: 16px; }
+#taskList li { margin: 8px 0; }
+.progress-track { height: 14px; border-radius: 12px; background: #233044; overflow: hidden; }
+.progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #7c3aed, #22d3ee); }
+.charts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.bars { display: flex; gap: 8px; align-items: flex-end; min-height: 130px; }
+.bar {
+  flex: 1;
+  background: #334155;
+  border-radius: 8px 8px 4px 4px;
+  position: relative;
+  min-width: 36px;
+}
+.bar span {
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: #94a3b8;
+}
+@media (max-width: 920px) {
+  .app-window { grid-template-columns: 1fr; }
+  .layout-grid, .charts { grid-template-columns: 1fr; }
+  .panel.full { grid-column: auto; }
+}
