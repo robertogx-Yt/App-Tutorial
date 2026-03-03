@@ -6,24 +6,42 @@ Este archivo te permite registrar:
 - Resumen de cambios
 - Información relevante para release
 
-## Última actualización
+## Versión 1.0.2
+- Fecha y hora (UTC): 2026-03-03 15:46:52 UTC
+- Tipo de cambio: fix
+- Autor: Codex
+- Commit: pendiente
 
-- **Versión:** `1.0.0`
-- **Fecha y hora (UTC):** `2026-03-03 15:01:33 UTC`
-- **Tipo de cambio:** `Documentación / control de versión`
-- **Autor del cambio:** `Codex`
-- **Commit base:** `de49252`
+### Resumen
+- Se corrigió el script de arranque para escritorio: `desktop:dev` ahora apunta correctamente a `node scripts/desktop-dev.mjs`.
+- Se dejó `dev` como alias estable de escritorio (`npm run dev` => `npm run desktop:dev`).
+- Se mantuvo `start` para iniciar rápidamente en Windows.
 
-### Cambios incluidos en esta entrada
+### Notas
+- Si ves `Missing script: dev` o `Missing script: desktop:dev`, estás en una copia/branch anterior. Haz `git pull` en la rama correcta.
 
-1. Se agregó este archivo `VERSION.md` para llevar control manual de versiones y cambios.
-2. Se dejó estructura base para seguir registrando futuras actualizaciones.
+---
 
-### Información relevante
+## Versión 1.0.1
+- Fecha y hora (UTC): 2026-03-03 15:45:25 UTC
+- Tipo de cambio: fix
+- Autor: Codex
+- Commit: pendiente
 
-- Proyecto: **Level Up Daily** (desktop-first para Windows).
-- Versión del paquete (`package.json`): `1.0.0`.
-- Recomendación: actualizar este archivo en cada release o cambio importante.
+### Resumen
+- Se agregaron mejoras al flujo de scripts para arranque en escritorio.
+- Se añadió `start` apuntando a `npm run dev`.
+
+---
+
+## Versión 1.0.0
+- Fecha y hora (UTC): 2026-03-03 15:01:33 UTC
+- Tipo de cambio: documentación
+- Autor: Codex
+- Commit base: de49252
+
+### Resumen
+- Se creó el archivo VERSION.md para llevar control manual de versiones y cambios.
 
 ---
 

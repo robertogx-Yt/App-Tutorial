@@ -5,6 +5,7 @@
   "type": "module",
   "main": "electron/main.cjs",
   "scripts": {
+    "start": "npm run dev",
     "dev": "npm run desktop:dev",
     "web:dev": "vite",
     "build": "tsc -b && vite build",
