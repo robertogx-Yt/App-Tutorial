@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.vite/
+android/
+.DS_Store
+*.log
+*.pyc
