@@ -2,14 +2,28 @@
 
 Aplicación gamificada estilo sci‑fi con Flappy Bird integrado.
 
-## Probar rápido
+## Abrir como app de escritorio (Windows)
 
 ```bash
 npm install
-npm run desktop:dev
+npm run dev
 ```
 
-## Exportar ejecutable Windows
+> `npm run dev` abre **ventana de escritorio de Electron** (no web en navegador).
+
+## Solo web (opcional para debug)
+
+```bash
+npm run web:dev
+```
+
+## Ejecutar app de escritorio desde build local
+
+```bash
+npm run desktop:start
+```
+
+## Exportar ejecutable Windows (.exe)
 
 ```bash
 npm run desktop:build
