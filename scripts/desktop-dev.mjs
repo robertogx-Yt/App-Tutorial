@@ -3,10 +3,23 @@ import http from 'node:http'
 
 const VITE_URL = process.env.VITE_DEV_SERVER_URL || 'http://127.0.0.1:5173'
 
-const vite = spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', 'web:dev'], {
-  stdio: 'inherit',
-  env: { ...process.env }
-})
+function spawnCommand(command, args = [], extraEnv = {}) {
+  if (process.platform === 'win32') {
+    return spawn('cmd.exe', ['/d', '/s', '/c', command], {
+      stdio: 'inherit',
+      env: { ...process.env, ...extraEnv }
+    })
+  }
+
+  return spawn(command, args, {
+    stdio: 'inherit',
+    env: { ...process.env, ...extraEnv }
+  })
+}
+
+const vite = process.platform === 'win32'
+  ? spawnCommand('npm run web:dev')
+  : spawnCommand('npm', ['run', 'web:dev'])
 
 let shuttingDown = false
 let electronProc = null
@@ -15,7 +28,7 @@ function shutdown(code = 0) {
   if (shuttingDown) return
   shuttingDown = true
   if (electronProc && !electronProc.killed) electronProc.kill()
-  if (!vite.killed) vite.kill()
+  if (vite && !vite.killed) vite.kill()
   process.exit(code)
 }
 
@@ -28,6 +41,7 @@ function checkServer() {
       res.resume()
       resolve(res.statusCode && res.statusCode < 500)
     })
+
     req.on('error', () => resolve(false))
     req.setTimeout(1200, () => {
       req.destroy()
@@ -52,10 +66,9 @@ async function main() {
     return
   }
 
-  electronProc = spawn(process.platform === 'win32' ? 'npx.cmd' : 'npx', ['electron', '.'], {
-    stdio: 'inherit',
-    env: { ...process.env, VITE_DEV_SERVER_URL: VITE_URL }
-  })
+  electronProc = process.platform === 'win32'
+    ? spawnCommand('npx electron .', [], { VITE_DEV_SERVER_URL: VITE_URL })
+    : spawnCommand('npx', ['electron', '.'], { VITE_DEV_SERVER_URL: VITE_URL })
 
   electronProc.on('exit', (code) => shutdown(code ?? 0))
 }

@@ -6,6 +6,21 @@ Este archivo te permite registrar:
 - Resumen de cambios
 - Información relevante para release
 
+## Versión 1.0.3
+- Fecha y hora (UTC): 2026-03-03 15:59:18 UTC
+- Tipo de cambio: fix
+- Autor: Codex
+- Commit: pendiente
+
+### Resumen
+- Se corrigió `scripts/desktop-dev.mjs` para Windows usando `cmd.exe /c` al lanzar procesos (`npm`/`npx`), evitando el error `spawn EINVAL`.
+- Se mantiene el flujo: iniciar Vite, esperar disponibilidad, abrir Electron en ventana.
+
+### Notas
+- En Windows ejecuta: `npm run dev`.
+
+---
+
 ## Versión 1.0.2
 - Fecha y hora (UTC): 2026-03-03 15:46:52 UTC
 - Tipo de cambio: fix
