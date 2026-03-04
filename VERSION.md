@@ -6,6 +6,22 @@ Este archivo te permite registrar:
 - Resumen de cambios
 - Información relevante para release
 
+## Versión 1.0.4
+- Fecha y hora (UTC): 2026-03-03 16:06:19 UTC
+- Tipo de cambio: fix
+- Autor: Codex
+- Commit: pendiente
+
+### Resumen
+- Se reforzó `scripts/desktop-dev.mjs` para abrir Electron desde `node_modules/.bin/electron(.cmd)` en lugar de depender de `npx`.
+- Se añadieron logs explícitos de estado (`Vite listo`, `Abriendo ventana Electron`) para diagnóstico.
+- Se agregó validación con mensaje claro cuando falta Electron local (`npm install`).
+
+### Notas
+- En Windows debe verse el mensaje `[desktop-dev] Abriendo ventana Electron...` antes de abrir la app.
+
+---
+
 ## Versión 1.0.3
 - Fecha y hora (UTC): 2026-03-03 15:59:18 UTC
 - Tipo de cambio: fix

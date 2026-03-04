@@ -1,9 +1,11 @@
 import { spawn } from 'node:child_process'
 import http from 'node:http'
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
 
 const VITE_URL = process.env.VITE_DEV_SERVER_URL || 'http://127.0.0.1:5173'
 
-function spawnCommand(command, args = [], extraEnv = {}) {
+function spawnShell(command, extraEnv = {}) {
   if (process.platform === 'win32') {
     return spawn('cmd.exe', ['/d', '/s', '/c', command], {
       stdio: 'inherit',
@@ -11,15 +13,14 @@ function spawnCommand(command, args = [], extraEnv = {}) {
     })
   }
 
-  return spawn(command, args, {
+  return spawn(command, [], {
     stdio: 'inherit',
-    env: { ...process.env, ...extraEnv }
+    env: { ...process.env, ...extraEnv },
+    shell: true
   })
 }
 
-const vite = process.platform === 'win32'
-  ? spawnCommand('npm run web:dev')
-  : spawnCommand('npm', ['run', 'web:dev'])
+const vite = spawnShell('npm run web:dev')
 
 let shuttingDown = false
 let electronProc = null
@@ -58,6 +59,22 @@ async function waitForVite(maxAttempts = 90) {
   return false
 }
 
+function resolveElectronCommand() {
+  if (process.platform === 'win32') {
+    const cmdPath = join(process.cwd(), 'node_modules', '.bin', 'electron.cmd')
+    if (existsSync(cmdPath)) {
+      return `"${cmdPath}" .`
+    }
+    return null
+  }
+
+  const binPath = join(process.cwd(), 'node_modules', '.bin', 'electron')
+  if (existsSync(binPath)) {
+    return `"${binPath}" .`
+  }
+  return null
+}
+
 async function main() {
   const ok = await waitForVite()
   if (!ok) {
@@ -66,11 +83,23 @@ async function main() {
     return
   }
 
-  electronProc = process.platform === 'win32'
-    ? spawnCommand('npx electron .', [], { VITE_DEV_SERVER_URL: VITE_URL })
-    : spawnCommand('npx', ['electron', '.'], { VITE_DEV_SERVER_URL: VITE_URL })
+  const electronCommand = resolveElectronCommand()
+  if (!electronCommand) {
+    console.error('No se encontró Electron local en node_modules. Ejecuta: npm install')
+    shutdown(1)
+    return
+  }
+
+  console.log('[desktop-dev] Vite listo en', VITE_URL)
+  console.log('[desktop-dev] Abriendo ventana Electron...')
+
+  electronProc = spawnShell(electronCommand, { VITE_DEV_SERVER_URL: VITE_URL })
 
   electronProc.on('exit', (code) => shutdown(code ?? 0))
+  electronProc.on('error', (err) => {
+    console.error('[desktop-dev] Error lanzando Electron:', err.message)
+    shutdown(1)
+  })
 }
 
 vite.on('exit', (code) => shutdown(code ?? 0))
