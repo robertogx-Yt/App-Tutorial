@@ -1,42 +1,32 @@
-# Level Up Daily (Desktop first - Windows)
+# Level Up Daily (Desktop + Android Studio)
 
-Aplicación gamificada estilo sci‑fi con Flappy Bird integrado.
-
-## Abrir SIEMPRE como ventana de escritorio (Windows)
-
+## Windows Desktop (Electron)
 ```bash
 npm install
 npm run dev
 ```
 
-`npm run dev` ahora usa un script propio (`scripts/desktop-dev.mjs`) que:
-1. inicia Vite,
-2. espera a que levante,
-3. abre Electron en ventana.
+## Importar en Android Studio (funcional)
 
-> Esto evita depender de `concurrently`, `wait-on` o `cross-env`.
-
-## Solo web (debug opcional)
-
+1. Genera el bundle web:
 ```bash
-npm run web:dev
+npm run build
 ```
 
-## Ejecutar app de escritorio desde build local
-
+2. Copia el bundle a `android/app/src/main/assets/web`:
 ```bash
-npm run desktop:start
+npm run android:prepare
 ```
 
-## Exportar ejecutable Windows (.exe)
+3. Abre Android Studio y selecciona la carpeta `android/` del repo.
 
-```bash
-npm run desktop:build
-```
+4. Deja que Android Studio sincronice Gradle.
 
-## Android (después)
+5. Ejecuta en emulador/dispositivo.
 
-```bash
-npm run android:setup
-npm run android:update
-```
+La app Android carga `file:///android_asset/web/index.html` en un `WebView` nativo.
+
+## Scripts clave
+- `npm run dev` → ventana de Electron.
+- `npm run android:prepare` → build web + copia assets para Android.
+- `npm run desktop:build` → empaquetado Windows.

@@ -22,6 +22,23 @@ Este archivo te permite registrar:
 
 ---
 
+## Versión 1.1.0
+- Fecha y hora (UTC): 2026-03-04 15:23:43 UTC
+- Tipo de cambio: feat
+- Autor: Codex
+- Commit: pendiente
+
+### Resumen
+- Se agregó proyecto Android Studio completo en `android/` con Gradle + Kotlin + WebView.
+- Se implementó `MainActivity` nativa que carga el bundle web desde `android_asset/web/index.html`.
+- Se añadió script `android:prepare` para copiar automáticamente `dist/` a assets Android.
+- Se actualizaron instrucciones para importar y ejecutar directamente desde Android Studio.
+
+### Notas
+- Flujo recomendado: `npm run build` -> `npm run android:prepare` -> abrir `android/` en Android Studio.
+
+---
+
 ## Versión 1.0.3
 - Fecha y hora (UTC): 2026-03-03 15:59:18 UTC
 - Tipo de cambio: fix

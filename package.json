@@ -14,7 +14,9 @@
     "desktop:start": "npm run build && electron .",
     "desktop:build": "npm run build && electron-builder --win",
     "android:setup": "npm run build && npx cap add android && npx cap sync android",
-    "android:update": "npm run build && npx cap copy android && npx cap sync android"
+    "android:update": "npm run build && npx cap copy android && npx cap sync android",
+    "android:prepare": "npm run build && node scripts/android-prepare-assets.mjs",
+    "android:studio": "npm run android:prepare"
   },
   "dependencies": {
     "@capacitor/android": "^6.1.2",
